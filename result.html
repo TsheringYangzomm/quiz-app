@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Results</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Results</h1>
+    <table border="1" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Time Taken (s)</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="resultTable"></tbody>
+    </table>
+    
+    <button onclick="location.href='index.html'" style="margin-top: 20px;">Try Again</button>
+  </div>
+
+  <script>
+    const resultTable = document.getElementById("resultTable");
+    let results = JSON.parse(localStorage.getItem("quizResults") || "[]");
+
+    function renderResults() {
+      resultTable.innerHTML = results.map((user, index) => `
+        <tr>
+          <td>${user.name}</td>
+          <td>${user.score}</td>
+          <td>${user.time}</td>
+          <td><button onclick="deleteUser(${index})">Delete</button></td>
+        </tr>
+      `).join("");
+    }
+
+    function deleteUser(index) {
+      results.splice(index, 1);
+      localStorage.setItem("quizResults", JSON.stringify(results));
+      renderResults();
+    }
+
+    renderResults();
+  </script>
+</body>
+</html>

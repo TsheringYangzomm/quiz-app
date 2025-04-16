@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <title>Quiz Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<div class="overlay"></div>
+<body>
+  <div class="container">
+    <h1>Enter Your Name to Start</h1>
+    <input type="text" id="username" placeholder="Your Name" />
+    <button onclick="startQuiz()">Start Quiz</button>
+  </div>
+
+  <script>
+    function startQuiz() {
+      const name = document.getElementById("username").value;
+      if (name) {
+        localStorage.setItem("quizUser", name);
+        window.location.href = "quiz.html";
+      }
+    }
+  </script>
+</body>
+</html>

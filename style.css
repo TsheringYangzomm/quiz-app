@@ -1,0 +1,189 @@
+/* style.css */
+
+/* Global Body Styling */
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background: url('assets/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Container Styling */
+  .container {
+    background: rgba(255, 255, 255, 0.95); /* Slight transparency for bg visibility */
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+  }
+  
+  /* Logo and Banner Styling */
+  .logo, .banner {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* Input and Button Styling */
+  input, button {
+    padding: 12px;
+    margin-top: 15px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* Input Focus Styling */
+  input:focus {
+    outline: none;
+    border-color: #7e57c2;
+  }
+  
+  /* Button Styling */
+  button {
+    background-color: #7e57c2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  /* Button Hover and Disabled Styling */
+  button:hover:enabled {
+    background-color: #5e35b1;
+  }
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Option Buttons */
+  .option-btn {
+    margin: 10px 0;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #f0f0f0;
+    color: #333; /* Make text readable in light mode */
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  
+  .option-btn:hover {
+    background-color: #d1c4e9;
+  }
+  
+  /* Answer Feedback Colors */
+  .correct {
+    background-color: #a5d6a7 !important;
+    border: 2px solid #388e3c;
+  }
+  
+  .wrong {
+    background-color: #ef9a9a !important;
+    border: 2px solid #d32f2f;
+  }
+  
+  .selected {
+    background-color: #ce93d8;
+    
+  }
+  
+  /* Dark Mode Toggle Switch */
+.switch {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .switch input {
+    display: none;
+  }
+  .slider {
+    width: 50px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 24px;
+    position: relative;
+    transition: 0.4s;
+    display: inline-block;
+  }
+  .slider::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: 0.4s;
+  }
+  input:checked + .slider {
+    background-color: #333;
+  }
+  input:checked + .slider::before {
+    transform: translateX(26px);
+  }
+  
+  /* Dark Mode Theme */
+  body.dark-mode {
+    background: url('assets/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+  }
+  
+  
+  body.dark-mode .container {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+  body.dark-mode .option-btn {
+    background: #333;
+    color: #fff;
+  }
+  body.dark-mode .correct {
+    background-color: #2e7d32 !important;
+    border: 2px solid #81c784;
+  }
+  body.dark-mode .wrong {
+    background-color: #c62828 !important;
+    border: 2px solid #ef9a9a;
+  }
+  
+  body.dark-mode .selected {
+    background-color: #7e57c2;
+    color: #fff;
+    border: 2px solid #b39ddb;
+  }
+  
+
+  body.dark-mode .option-btn:hover {
+    background-color: rgba(110, 78, 139, 0.564);
+    color: #fff;
+  }
+  
+  .option-btn:hover {
+    background-color: #e0e0e0;
+    color: #333;
+  }
+  .overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* dark transparent overlay */
+    z-index: -1;
+  }
+  

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<div class="overlay"></div>
+<body>
+
+  <!-- 🌓 Dark Mode Toggle Fixed at Top-Right -->
+  <div class="fixed-toggle">
+    <label class="switch">
+      <input type="checkbox" id="darkModeToggle" />
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <!-- Main Quiz Container -->
+  <div class="container">
+    <h2 id="welcomeText"></h2>
+    <p id="question">Loading...</p>
+    <p id="timer" style="font-weight: bold; font-size: 18px; margin: 10px 0;"></p>
+    <div id="options"></div>
+    <button id="confirmBtn" disabled>Confirm Answer</button>
+    <button id="nextBtn" disabled>Next Question</button>
+  </div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+  <script>
+    const toggle = document.getElementById("darkModeToggle");
+
+    // Load user preference
+    if (localStorage.getItem("darkMode") === "enabled") {
+      document.body.classList.add("dark-mode");
+      toggle.checked = true;
+    }
+
+    // Toggle dark mode
+    toggle.addEventListener("change", () => {
+      if (toggle.checked) {
+        document.body.classList.add("dark-mode");
+        localStorage.setItem("darkMode", "enabled");
+      } else {
+        document.body.classList.remove("dark-mode");
+        localStorage.setItem("darkMode", "disabled");
+      }
+    });
+  </script>
+</body>
+</html>
