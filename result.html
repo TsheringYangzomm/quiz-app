@@ -4,8 +4,22 @@
   <meta charset="UTF-8">
   <title>Quiz Results</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
 </head>
 <body>
+  <!-- 🌓 Dark Mode Toggle Fixed at Top-Right -->
+  <div class="fixed-toggle">
+    <label class="switch">
+      <input type="checkbox" id="darkModeToggle" />
+      <span class="slider"></span>
+    </label>
+  </div>
+   
+  <div id="certificateContainer" style="display:none;">
+    <!-- Certificate content will be inserted dynamically -->
+  </div>
+  
   <div class="container">
     <h1>Results</h1>
     <table border="1" style="width: 100%;">
@@ -23,6 +37,7 @@
     <button onclick="location.href='index.html'" style="margin-top: 20px;">Try Again</button>
   </div>
 
+  
   <script>
     const resultTable = document.getElementById("resultTable");
     let results = JSON.parse(localStorage.getItem("quizResults") || "[]");
@@ -45,6 +60,76 @@
     }
 
     renderResults();
+    
+    const toggle = document.getElementById("darkModeToggle");
+
+if (localStorage.getItem("darkMode") === "enabled") {
+  document.body.classList.add("dark-mode");
+  toggle.checked = true;
+}
+
+toggle.addEventListener("change", () => {
+  if (toggle.checked) {
+    document.body.classList.add("dark-mode");
+    localStorage.setItem("darkMode", "enabled");
+  } else {
+    document.body.classList.remove("dark-mode");
+    localStorage.setItem("darkMode", "disabled");
+  }
+});
+
+// Back to Categories
+document.getElementById('backToCategories').onclick = function() {
+  window.location.href = 'category.html'; // Go to categories page
+};
+
+// Log Out
+document.getElementById('logOut').onclick = function() {
+  // You can destroy the session on the server-side to log out or clear the session here
+  window.location.href = 'index.html'; // Redirect to login page
+};
+
+// Next Category
+document.getElementById('nextCategory').onclick = function() {
+  // Remove the current category and score from localStorage (optional)
+  localStorage.removeItem('selectedCategory');
+  localStorage.removeItem('score');
+  window.location.href = 'category.html'; // Go back to categories page
+};
+// Fetch all categories
+const categories = Object.keys(quizQuestions);
+
+// Fetch completed categories from localStorage
+const completedCategories = JSON.parse(localStorage.getItem("completedCategories") || "[]");
+
+// Check if the user has completed all categories
+if (categories.every(category => completedCategories.includes(category))) {
+  // Award certificate
+  displayCertificate();
+} else {
+  // Show message indicating that the user hasn't completed all categories
+  showIncompleteMessage();
+}
+
+function displayCertificate() {
+  // Generate certificate (either show a certificate image or redirect to a certificate generation page)
+  const certificateContainer = document.getElementById("certificateContainer");
+  certificateContainer.innerHTML = `
+    <h2>Congratulations, ${user}!</h2>
+    <p>You have completed all quiz categories!</p>
+    <button onclick="downloadCertificate()">Download Certificate</button>
+  `;
+}
+
+function showIncompleteMessage() {
+  const messageContainer = document.getElementById("incompleteMessage");
+  messageContainer.innerHTML = `
+    <p>You have not completed all categories. Keep going!</p>
+  `;
+}
+
   </script>
 </body>
 </html>
+
+

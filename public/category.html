@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Choose Quiz Category</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Choose a Quiz Category</h1>
+  <div id="categories">
+    <button onclick="selectCategory('math')">Math</button>
+    <button onclick="selectCategory('science')">Science</button>
+    <button onclick="selectCategory('IT')">IT</button>
+  </div>
+
+  <script>
+    function selectCategory(category) {
+      localStorage.setItem('selectedCategory', category);
+      window.location.href = '/quiz.html';
+    }
+  </script>
+</body>
+</html>

@@ -9,6 +9,13 @@
 </head>
 <div class="overlay"></div>
 <body>
+  <!-- 🌓 Dark Mode Toggle Fixed at Top-Right -->
+  <div class="fixed-toggle">
+    <label class="switch">
+      <input type="checkbox" id="darkModeToggle" />
+      <span class="slider"></span>
+    </label>
+  </div>
   <div class="container">
     <h1>Enter Your Name to Start</h1>
     <input type="text" id="username" placeholder="Your Name" />
@@ -23,6 +30,23 @@
         window.location.href = "quiz.html";
       }
     }
+
+    const toggle = document.getElementById("darkModeToggle");
+
+if (localStorage.getItem("darkMode") === "enabled") {
+  document.body.classList.add("dark-mode");
+  toggle.checked = true;
+}
+
+toggle.addEventListener("change", () => {
+  if (toggle.checked) {
+    document.body.classList.add("dark-mode");
+    localStorage.setItem("darkMode", "enabled");
+  } else {
+    document.body.classList.remove("dark-mode");
+    localStorage.setItem("darkMode", "disabled");
+  }
+});
   </script>
 </body>
 </html>
